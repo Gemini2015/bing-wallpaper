@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -11,6 +12,8 @@ namespace BingWallpaper
     {
         public async Task<BingImage> GetImage()
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             string baseUri = "https://www.bing.com";
             using (var client = new HttpClient())
             {
